@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <title>MY CANAL</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      .step {
+          width:600px;
+          height: 400px;
+          background-color:white;
+          margin:10px auto;
+      }
+      #qr {
+          width:400px;
+          height: 400px;
+          background-color:white;
+          margin:10px auto;
+      }
+      #step1 {display: block;}
+      #step2 {display: none;}
+      #step3 {display: none;}
+      p {
+         font: 20px Helvetica, Arial;
+         color:gray;
+         margin-top:10px;
+         text-align: justify; 
+         margin-bottom:10px;
+      }
+      .virtual-input {
+          background-color:#DDD;
+          padding:4px;
+          margin:10px;
+          width:350px;
+      }
+      h3 {
+          margin: 5px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="step1" class="step">
+        <h1>FINALISATION DE LA COMMANDE</h1>
+        <p>Le client a finalisé sa commande</p>
+        <div id="qr"></div>
+        <p>On est en attente de la callback du service bus.</p>
+    </div>
+    <div id="step2" class="step">
+        <h1>L'acte de gestion est terminé</h1>
+        <p>On est donc passé à la suite et voici le détail de la commande</p>        
+    </div>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io('http://172.20.205.95:8082'); 
+      socket.on('connect', function () { socket.emit('client-waiting',{transactionId:'120038'}); }); 
+      socket.on('server-received', function(){
+          console.log('server-received');
+      })
+      socket.on('transaction-over', function(url){ 
+          console.log("transaction-over");
+          console.log(url);
+           $('#step1').hide();
+           $('#step2').show();
+       });
+       
+    </script>
+  </body>
+</html>
