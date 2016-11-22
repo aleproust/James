@@ -2,13 +2,13 @@ let bodyParser = require('body-parser')
 let conf = require('./config/config-socket')
 let server_port = conf.port
 
-let server_ip_address = conf.ipAdress
+//let server_ip_address = conf.ipAdress
 
 let express = require('express')
 let routeSlack = require('./routes/slack')
 let slackApi = require('./slack/slack-api')
 let app = express()
-let http = require('http').Server(app)
+
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -31,12 +31,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
-// -- Start http server
-http.listen(server_port, server_ip_address, function () {
-    
-  console.log('Listening on ' + server_ip_address + ', server_port ' + server_port)
-})
+app.listen(server_port)
 
 
 
