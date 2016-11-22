@@ -1,0 +1,16 @@
+{
+  "name": "james",
+  "main": "server.js",
+  "version": "0.1.0",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "4.10.2",
+    "lodash": "~3.10.1",
+    "moment": "^2.15.1",
+    "slack-node": "^0.1.8",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "socket.io": "^1.4.8"
+  }
+}
