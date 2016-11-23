@@ -21,4 +21,18 @@ slackRoute.post('/welcome', function (req, res) {
 })
 
 
+slackRoute.post('/eventSubscribe', function (req, res) {
+        try {
+            //Action
+            res.send(req.body.challenge)
+        } catch (error) {
+            console.log('connected sockets')
+            res.send({
+                response: 404,
+                message: 'Socket problem'
+            })
+        }
+})
+
+
 module.exports = slackRoute;
