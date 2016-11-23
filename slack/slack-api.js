@@ -2,18 +2,14 @@
 let Slack = require('slack-node')
 let token = require('../config/config-socket').tokenSlack
 let https = require('https')
-let webhookUri = ''
+let webhookUri = process.env.WEBHOOK_GENERAL
 let slack = new Slack()
 let to
 slack.setWebhook(webhookUri)
 
-function apiStart(){
-    https.get()
-}
-
 function messageInSlack (text) {
   slack.webhook({
-    channel: '#trello-board',
+    channel: '#general',
     username: 'LBJ',
     text: text
   }, function (err, response) {

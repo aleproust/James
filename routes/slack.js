@@ -1,7 +1,10 @@
 'use strict'
 
-var express = require('express');
-var slackRoute = express.Router();
+let express = require('express');
+let log = require('../config/log-js')
+let slackWriter = require('../slack/slack-api')
+
+let slackRoute = express.Router();
 
 
 slackRoute.post('/welcome', function (req, res) {
@@ -21,9 +24,17 @@ slackRoute.post('/welcome', function (req, res) {
 })
 
 
-slackRoute.post('/eventSubscribe', function (req, res) {
+slackRoute.post('/event', function (req, res) {
         try {
+            log.debug('Event Type' + _.get(req.body.type))
             //Action
+            switch(req.body.type){
+                case 'channel_created':
+                    slackWriter.messageInSlack('Channel created')
+                    break;
+                default:
+                    slackWriter.messageInSlack('Event not found')
+            }
             res.send(req.body.challenge)
         } catch (error) {
             console.log('connected sockets')
