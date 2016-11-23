@@ -1,3 +1,4 @@
+'use strict'
 let Slack = require('slack-node')
 let token = require('../config/config-socket').tokenSlack
 let https = require('https')
