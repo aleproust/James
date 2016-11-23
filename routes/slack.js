@@ -26,7 +26,6 @@ slackRoute.post('/welcome', function (req, res) {
 
 slackRoute.post('/event', function (req, res) {
         try {
-            log.debug('Event Type' + _.get(req.body.type))
             //Action
             switch(req.body.type){
                 case 'channel_created':
