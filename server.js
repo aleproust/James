@@ -1,6 +1,7 @@
 'use strict'
 let bodyParser = require('body-parser')
 let conf = require('./config/config-socket')
+let log = require('./config/log-js')
 let server_port = conf.port
 
 //let server_ip_address = conf.ipAdress
@@ -34,7 +35,9 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-app.listen(server_port)
+app.listen(process.env.PORT)
+
+log.debug('Server listens on ' + process.env.PORT)
 
 
 
