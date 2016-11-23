@@ -3,6 +3,7 @@ let Slack = require('slack-node')
 let token = require('../config/config-socket').tokenSlack
 let https = require('https')
 let webhookUri = process.env.WEBHOOK_GENERAL
+console.log(webhookUri)
 let slack = new Slack()
 let to
 slack.setWebhook(webhookUri)

@@ -34,12 +34,12 @@ slackRoute.post('/event', function (req, res) {
                 default:
                     slackWriter.messageInSlack('Event not found')
             }
+
             res.send(req.body.challenge)
         } catch (error) {
-            console.log('connected sockets')
             res.send({
                 response: 404,
-                message: 'Socket problem'
+                message: 'Event problem'
             })
         }
 })
