@@ -5,7 +5,7 @@ let https = require('https')
 let webhookUri = process.env.WEBHOOK_GENERAL
 console.log(webhookUri)
 let slack = new Slack()
-let to
+
 slack.setWebhook(webhookUri)
 
 function messageInSlack (text) {
