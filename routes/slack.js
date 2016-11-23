@@ -1,8 +1,8 @@
+'use strict'
+
 var express = require('express');
 var slackRoute = express.Router();
-slackRoute.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html')
-})
+
 
 slackRoute.post('/welcome', function (req, res) {
         try {

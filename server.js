@@ -1,3 +1,4 @@
+'use strict'
 let bodyParser = require('body-parser')
 let conf = require('./config/config-socket')
 let server_port = conf.port
@@ -24,7 +25,9 @@ app.use(bodyParser.json())
 //--- Init routes --
 app.use('/slack', routeSlack)
 
-
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html')
+})
 app.use(function(req, res, next) {
   let err = new Error('Not Found');
   err.status = 404;
