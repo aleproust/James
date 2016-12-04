@@ -36,6 +36,7 @@ slackRoute.post('/event', function (req, res) {
 
             res.send(req.body.challenge)
         } catch (error) {
+            log.debug('Error event' +error)
             res.send({
                 response: 404,
                 message: 'Event problem'
