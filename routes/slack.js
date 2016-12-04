@@ -32,8 +32,6 @@ slackRoute.post('/event', function (req, res) {
                     console.log('new channel created event')
                     slackWriter.newChannelEvent(req.body.channel)
                     break;
-                default:
-                    slackWriter.messageInSlack('Event not found')
             }
 
             res.send(req.body.challenge)
